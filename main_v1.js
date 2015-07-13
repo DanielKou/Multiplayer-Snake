@@ -105,6 +105,7 @@ $(document).ready(function(){
       return;
     }
 
+    //IF FOOD IS EATEN
     if(nx == food.x && ny == food.y){
       var tail = {x: nx, y:ny};
       score++;
