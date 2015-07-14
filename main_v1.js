@@ -9,7 +9,8 @@ $(document).ready(function(){
   var d1;
   var d2;
   var food;
-  var score;
+  var score1;
+  var score2;
   
 	//PaAINT CANVAS
 	ctx.fillStyle = "white";
@@ -27,7 +28,8 @@ $(document).ready(function(){
     create_snake1();
     create_snake2();
     create_food();
-    score = 0;
+    score1 = 0;
+    score2 = 0;
       
     if (typeof game_loop != "undefined") clearInterval(game_loop);
       game_loop = setInterval(paint, 60); 
@@ -53,10 +55,10 @@ $(document).ready(function(){
   }
 
   
-    function create_food(){
-      food = {x: Math.round(Math.random()*(w-cw)/cw),
-              y: Math.round(Math.random()*(h-cw)/cw)};
-    }
+  function create_food(){
+    food = {x: Math.round(Math.random()*(w-cw)/cw),
+            y: Math.round(Math.random()*(h-cw)/cw)};
+  }
   
 	
 	
@@ -68,8 +70,8 @@ $(document).ready(function(){
     ctx.strokeRect(0, 0, w, h);
     
     //SNAKE MOVEMENT
-    gamePlay(snake_array1, d1);
-    gamePlay(snake_array2, d2);
+    gamePlay(snake_array1, d1, 1);
+    gamePlay(snake_array2, d2, 2);
       
 
 		for(var i = 0; i < snake_array1.length; i++){
@@ -84,12 +86,14 @@ $(document).ready(function(){
       
     paint_cell(food.x, food.y, "red");
       
-    var score_text = "Score: " + score;
-    ctx.fillText(score_text, 5, h-5);
+    var score1_text = "Player 1 score: " + score1;
+    var score2_text = "Player 2 score: " + score2;
+    ctx.fillText(score1_text, 5, h-5);
+    ctx.fillText(score2_text, 370, h-5);
 	}
     
   
-  function gamePlay(array, d){
+  function gamePlay(array, d, player){
     var nx = array[0].x;
     var ny = array[0].y;
     
@@ -108,7 +112,10 @@ $(document).ready(function(){
     //IF FOOD IS EATEN
     if(nx == food.x && ny == food.y){
       var tail = {x: nx, y:ny};
-      score++;
+
+      if (player == 1) score1++;
+      else score2++;
+
       //CREATE NEW FOOD
       create_food();
     }
@@ -116,7 +123,6 @@ $(document).ready(function(){
       var tail = array.pop();
       tail.x = nx;
       tail.y = ny;
-      
     }
     
     array.unshift(tail);
@@ -140,7 +146,7 @@ $(document).ready(function(){
     var length2 = snake_array2.length;
 
     for (var i=0; i<length1; i++){
-      if (snake_array1[i].x == x && snake_array1[i].y == y)
+      if (snake_array1[i].x == x && snake_array1[i].y == y) 
         return true;        
     }
 
