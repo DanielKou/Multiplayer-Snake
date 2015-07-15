@@ -1,0 +1,29 @@
+#canvas{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}
+
+body{
+	text-align: center;
+}
+
+.instructions{
+	text-align: left;
+}
+
+h2, h3{
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+h2{
+	text-decoration: underline;
+}
+
+.buttons a{
+	margin-left: auto;
+	margin-right: auto;
+
+}
