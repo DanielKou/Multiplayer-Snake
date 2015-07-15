@@ -4,6 +4,8 @@ $(document).ready(function(){
 	var ctx = canvas.getContext("2d");
 	var w = $("#canvas").width();
 	var h = $("#canvas").height();
+  var d_queue1;
+  var d_queue2;
   
 	var cw = 10;     //cell width
   var d1;
@@ -28,6 +30,8 @@ $(document).ready(function(){
     create_snake1();
     create_snake2();
     create_food();
+    d_queue1 = [];
+    d_queue2 = [];
     score1 = 0;
     score2 = 0;
       
@@ -70,8 +74,8 @@ $(document).ready(function(){
     ctx.strokeRect(0, 0, w, h);
     
     //SNAKE MOVEMENT
-    gamePlay(snake_array1, d1, 1);
-    gamePlay(snake_array2, d2, 2);
+    gamePlay(snake_array1, d1, 1, d_queue1.shift());
+    gamePlay(snake_array2, d2, 2, d_queue2.shift());
       
 
 		for(var i = 0; i < snake_array1.length; i++){
@@ -93,10 +97,27 @@ $(document).ready(function(){
 	}
     
   
-  function gamePlay(array, d, player){
+  function gamePlay(array, d, player, change_d){
     var nx = array[0].x;
     var ny = array[0].y;
     
+    if (change_d){
+      if (player == 1){
+        if (change_d == "37" && d != "right") d = d1 = "left";
+        else if (change_d == "38" && d != "down") d = d1 = "up";
+        else if (change_d == "39" && d != "left") d = d1 = "right";
+        else if (change_d == "40" && d != "up")d = d1 = "down";
+      }
+      else{
+        if (change_d == "65" && d != "right") d = d2 = "left";
+        else if (change_d == "87" && d != "down") d = d2 = "up";
+        else if (change_d == "68" && d != "left") d = d2 = "right";
+        else if (change_d == "83" && d != "up") d = d2 = "down";
+      }
+    }
+    
+
+
     //SNAKE MOVEMENT
     if(d == "right") nx++;
     else if(d == "left") nx--;
@@ -163,25 +184,13 @@ $(document).ready(function(){
     //SNAKE MOVEMENT LISTENER
   $(document).keydown(function(e){
 	   var key = e.which;
+
+     if (key >= "37" && key<= "40") d_queue1.push(key);
+     else if (key == "65") d_queue2.push(key);
+     else if (key == "87") d_queue2.push(key);
+     else if (key == "68") d_queue2.push(key);
+     else if (key == "83") d_queue2.push(key);
     
-      //ARROW KEYS
-	   if (key == "37" && d1 != "right") 
-        d1 = "left";
-	   else if (key == "38" && d1 != "down") 
-        d1 = "up";
-	   else if (key == "39" && d1 != "left") 
-        d1 = "right";
-	   else if (key == "40" && d1 != "up")
-        d1 = "down";
-    
-      //WASD KEYS
-      else if (key == "65" && d2 != "right") 
-        d2 = "left";
-      else if (key == "87" && d2 != "down") 
-        d2 = "up";
-      else if (key == "68" && d2 != "left") 
-        d2 = "right";
-      else if (key == "83" && d2 != "up")
-        d2 = "down";
+	   
 	})
 })
