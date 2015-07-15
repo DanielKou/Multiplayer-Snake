@@ -4,8 +4,9 @@ $(document).ready(function(){
  var ctx = canvas.getContext("2d");
  var w = $("#canvas").width();
  var h = $("#canvas").height();
-  
- var cw = 10;     //cell width
+ var d_queue; //queue the snake movements in case 2 input is pressed in less than 60ms 
+
+ var cw = 10; //cell width
     var d;
     var food;
     var score;
@@ -23,6 +24,7 @@ $(document).ready(function(){
       d = "right"; //default direction 
       create_snake();
       create_food();
+      d_queue = [];
       score = 0;
       
       if (typeof game_loop != "undefined") clearInterval(game_loop);
@@ -59,6 +61,15 @@ $(document).ready(function(){
       //SNAKE MOVEMENT
       var nx = snake_array[0].x;
       var ny = snake_array[0].y;
+
+      var change_d = d_queue.shift();
+
+      if (change_d){
+        if (change_d == "37" && d != "right") d = "left";
+        else if (change_d == "38" && d != "down") d = "up";
+        else if (change_d == "39" && d != "left") d = "right";
+        else if (change_d == "40" && d != "up") d = "down";
+      }
       
       if(d == "right") nx++;
       else if(d == "left") nx--;
@@ -90,8 +101,7 @@ $(document).ready(function(){
       snake_array.unshift(tail);
       
       
-   for(var i = 0; i < snake_array.length; i++)
-   {
+   for(var i = 0; i < snake_array.length; i++){
      var c = snake_array[i];
      
      paint_cell(c.x, c.y, "black");
@@ -101,56 +111,28 @@ $(document).ready(function(){
       
       var score_text = "Score: " + score;
       ctx.fillText(score_text, 5, h-5);
-      
- }
+  }
     
-  
-  
-    function paint_cell(x, y, colour){
-      ctx.fillStyle = colour;
-      ctx.fillRect(x*cw, y*cw, cw, cw);
-      ctx.strokeStyle = "white";
-      ctx.strokeRect(x*cw, y*cw, cw, cw);
-    }
-  
-  
-  
-  
-    //SNAKE BODY COLLISION
-    function check_collision(x, y, array){
-      for (var i=0; i<array.length; i++){
-        if (array[i].x == x && array[i].y == y)
-          return true;        
-      }
-      
-      return false;
-      
-    }
-  
-  
-  
-  
-    //SNAKE MOVEMENT LISTENER
-    $(document).keydown(function(e){
-   var key = e.which;
-   if (key == "37" && d != "right") d = "left";
-   else if (key == "38" && d != "down") d = "up";
-   else if (key == "39" && d != "left") d = "right";
-   else if (key == "40" && d != "up") d = "down";
- })
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  function paint_cell(x, y, colour){
+    ctx.fillStyle = colour;
+    ctx.fillRect(x*cw, y*cw, cw, cw);
+    ctx.strokeStyle = "white";
+    ctx.strokeRect(x*cw, y*cw, cw, cw);
+  }
 
- 
- 
- 
+  //SNAKE BODY COLLISION
+  function check_collision(x, y, array){
+    for (var i=0; i<array.length; i++){
+      if (array[i].x == x && array[i].y == y)
+        return true;        
+    }
+    return false;
+  }
+  
+  //SNAKE MOVEMENT LISTENER
+  $(document).keydown(function(e){
+     var key = e.which;
+     //ADD MOVEMENT TO QUEUE
+     if (key >= "37" && key<= "40") d_queue.push(key);
+   })
 }) 
