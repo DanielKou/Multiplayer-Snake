@@ -179,7 +179,11 @@ $(document).ready(function(){
   //SNAKE MOVEMENT LISTENER
   $(document).keydown(function(e){
      var key = e.which;
+      if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+
      //ADD MOVEMENT TO QUEUE
-     if (key >= "37" && key<= "40") d_queue.push(key);
+      if (key >= "37" && key<= "40") d_queue.push(key);
    })
 }) 

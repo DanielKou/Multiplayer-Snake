@@ -2,23 +2,26 @@
 <html>
 	<head>
 		<title>Mirror Snake</title>
-		<link rel="stylesheet" href="main.css">
+		<link rel="stylesheet" href="assets/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/main.css">
 	</head>
 
 	<body>
 		<h2>Mirror Snake</h2>
-		<h3>Try the other versions!</h3>
-		<a href="snake_orig.html">Single Player</a>
-		<a href="snake_2p.html">Multiplayer</a>
+		<h4>Try the other versions!</h4>
+		<a class="btn btn-default btn-primary" href="snake_orig.html">Single Player</a>
+		<a class="btn btn-default btn-primary" href="snake_2p.html">Multiplayer</a>
 
 		</div>
 
 
 		<canvas id="canvas" width="450" height="450"></canvas>
 
-		<div class="instructions">
-			<h4>Instructions</h4>
-			<p>Control the snakes with the arrow keys. The arrow keys will directly correspond to the blue snake, but inversly control the black one. That is, moving the blue snake down will cause the black snake to move up. The blue snake must eat the blue food and black snake must eat the black food. You lose the game by touching the walls, touching the other snake, or eating the wrong coloured food.</p>
+		<div class="container">
+			<div class="instructions">
+				<h4>Instructions</h4>
+				<p>Control the snakes with the arrow keys. The arrow keys will directly correspond to the 	blue snake, but inversly control the black one. That is, moving the blue snake down will 	cause the black snake to move up. The blue snake must eat the blue food and black snake must 	eat the black food. You lose the game by touching the walls, touching the other snake, or 	eating the wrong coloured food.</p>
+			</div>
 		</div>
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>

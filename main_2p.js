@@ -185,11 +185,15 @@ $(document).ready(function(){
   $(document).keydown(function(e){
 	   var key = e.which;
 
-     if (key >= "37" && key<= "40") d_queue1.push(key);
-     else if (key == "65") d_queue2.push(key);
-     else if (key == "87") d_queue2.push(key);
-     else if (key == "68") d_queue2.push(key);
-     else if (key == "83") d_queue2.push(key);
+    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+      e.preventDefault();
+    }
+
+    if (key >= "37" && key<= "40") d_queue1.push(key);
+    else if (key == "65") d_queue2.push(key);
+    else if (key == "87") d_queue2.push(key);
+    else if (key == "68") d_queue2.push(key);
+    else if (key == "83") d_queue2.push(key);
     
 	   
 	})

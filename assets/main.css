@@ -13,11 +13,6 @@ body{
 	text-align: left;
 }
 
-h2, h3{
-	margin-bottom: 0px;
-	margin-top: 0px;
-}
-
 h2{
 	text-decoration: underline;
 }
@@ -25,5 +20,4 @@ h2{
 .buttons a{
 	margin-left: auto;
 	margin-right: auto;
-
 }
