@@ -11,7 +11,9 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-server.listen(3000, function(){
+app.set('port', (process.env.PORT || 3000));
+
+server.listen(app.get('port'), function(){
   console.log('Server listening to port:3000');
 });
 
