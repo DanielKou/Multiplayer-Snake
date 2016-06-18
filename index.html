@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Multiplayer Snake</title>
+		<link rel="stylesheet" href="main.css">
+	</head>
+
+	<body>
+
+		<ul class="pages">
+			<li class="room page">
+				<div class="form">
+        	<h3 class="title">Room ID:</h3>
+        	<input class="usernameInput" type="text" maxlength="6" />
+					<h1 class="error">Temp text</h1>
+      	</div>
+				<div class="form">
+					<button id="join" type="button">Join Room</button>
+					<button id="create" type="button">Create Room</button>
+				</div>
+
+			</li>
+
+			<li class="game page">
+				<h2>Multiplayer Snake</h2>
+				<h4 class="player">You are Player </h4>
+
+				<canvas id="canvas" width="450" height="450"></canvas>
+
+				<div class="container">
+					<div class="instructions">
+						<h4>Instructions</h4>
+						<p>Control your snake with the arrow keys. Touching walls, yourself, or the opponent will cause a game over.</p>
+					</div>
+				</div>
+			</li>
+		</ul>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="main.js"></script>
+	</body>
+</html>

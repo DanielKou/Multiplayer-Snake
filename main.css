@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+html, input {
+  font-family:
+    "HelveticaNeue-Light",
+    "Helvetica Neue Light",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    "Lucida Grande",
+    sans-serif;
+}
+
+
+
+ul {
+  list-style: none;
+  word-wrap: break-word;
+}
+
+.pages {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Login Page */
+.room.page .form {
+  height: 100px;
+  margin-top: -100px;
+  position: absolute;
+
+  text-align: center;
+  top: 50%;
+  width: 100%;
+}
+
+.room.page .form .usernameInput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid;
+  outline: none;
+  padding-bottom: 15px;
+  text-align: center;
+  width: 400px;
+}
+
+.room.page .title {
+  font-size: 200%;
+}
+
+.room.page .usernameInput {
+  font-size: 200%;
+  letter-spacing: 3px;
+}
+
+
+.game {
+  display: none;
+  text-align: center;
+}
+
+.error {
+  color: #ff0000;
+  font-size: 14px;
+  text-align: center;
+  top: 50%;
+  display: none;
+}

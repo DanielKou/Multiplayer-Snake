@@ -1,13 +1,12 @@
 # JS-Snake
-A snake game rendered by Javascript with single player, multiplayer, and mirror mode.
+Multiplayer snake game created with sockets.io
 
-Single player:
-![Screenshot](screen_orig.png)
+Create or join a game and play with friends
 
-Multiplayer:
-![Screenshot](screen_2p.png)
+To run locally,
 
-Mirror:
-![Screenshot](screen_mir.png)
-
-(screenshots are pretty crappy  :worried:)
+```
+cd JS-Snake
+npm install
+node .
+```
