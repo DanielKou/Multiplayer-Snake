@@ -1,10 +1,23 @@
-* {
-  box-sizing: border-box;
-}
-
 html {
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
+}
+
+html, body {
+  height:100%;
+  min-height:100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  box-sizing:border-box;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
 html, input {
@@ -18,7 +31,11 @@ html, input {
     sans-serif;
 }
 
-
+.wrap {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
 
 ul {
   list-style: none;
@@ -28,6 +45,7 @@ ul {
 .pages {
   height: 100%;
   margin: 0;
+  margin-top:-15%;
   padding: 0;
   width: 100%;
 }
@@ -35,12 +53,40 @@ ul {
 /* Login Page */
 .room.page .form {
   height: 100px;
-  margin-top: -100px;
-  position: absolute;
+  /*margin-top: -100px;*/
+  /*position: absolute;*/
 
   text-align: center;
-  top: 50%;
+  /*top: 50%;*/
   width: 100%;
+}
+
+.room.page .buttons {
+  margin-top:60px;
+  text-align:center;
+}
+
+.room.page .buttons button {
+  width:140px;
+  padding:10px 15px;
+  font-size:1.1em;
+  color:#fff;
+  border:none;
+  cursor:pointer;
+}
+
+button:hover {
+  opacity:0.7;
+}
+button#join {
+  background-color:#00b300;
+}
+button#create {
+  background-color:#0066ff;
+}
+
+.room.page .buttons button:not(:first-child) {
+  margin-left:15px;
 }
 
 .room.page .form .usernameInput {
@@ -50,7 +96,7 @@ ul {
   outline: none;
   padding-bottom: 15px;
   text-align: center;
-  width: 400px;
+  width: 500px;
 }
 
 .room.page .title {
