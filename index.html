@@ -7,27 +7,24 @@
 	</head>
 
 	<body>
-
+	<div class="wrap">
 		<ul class="pages">
 			<li class="room page">
 				<div class="form">
-        	<h3 class="title">Room ID:</h3>
-        	<input class="usernameInput" type="text" maxlength="6" />
+					<h3 class="title">Room ID:</h3>
+					<input class="usernameInput" type="text" maxlength="6" />
 					<h1 class="error">Temp text</h1>
-      	</div>
-				<div class="form">
+				</div>
+				<div class="buttons">
 					<button id="join" type="button">Join Room</button>
 					<button id="create" type="button">Create Room</button>
 				</div>
-
 			</li>
 
 			<li class="game page">
 				<h2>Multiplayer Snake</h2>
 				<h4 class="player">You are Player </h4>
-
 				<canvas id="canvas" width="450" height="450"></canvas>
-
 				<div class="container">
 					<div class="instructions">
 						<h4>Instructions</h4>
@@ -36,9 +33,10 @@
 				</div>
 			</li>
 		</ul>
+	</div>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-		<script src="/socket.io/socket.io.js"></script>
-		<script src="main.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="main.js"></script>
 	</body>
 </html>
